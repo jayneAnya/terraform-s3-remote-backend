@@ -1,0 +1,18 @@
+# Terraform working directories
+.terraform/
+
+# State files: never commit these (they can contain secrets)
+*.tfstate
+*.tfstate.*
+*.tfplan
+
+# Crash and override files
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Local credentials
+.env
