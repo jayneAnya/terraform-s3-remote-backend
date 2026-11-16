@@ -1,0 +1,254 @@
+data.aws_caller_identity.current: Reading...
+data.aws_caller_identity.current: Read complete after 0s [id=657103446220]
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  + create
+ <= read (data resources)
+
+Terraform will perform the following actions:
+
+  # module.state_bucket.data.aws_iam_policy_document.bucket will be read during apply
+  # (config refers to values not yet known)
+ <= data "aws_iam_policy_document" "bucket" {
+      + id            = (known after apply)
+      + json          = (known after apply)
+      + minified_json = (known after apply)
+
+      + statement {
+          + actions   = [
+              + "s3:*",
+            ]
+          + effect    = "Deny"
+          + resources = [
+              + (known after apply),
+              + (known after apply),
+            ]
+          + sid       = "DenyInsecureTransport"
+
+          + condition {
+              + test     = "Bool"
+              + values   = [
+                  + "false",
+                ]
+              + variable = "aws:SecureTransport"
+            }
+
+          + principals {
+              + identifiers = [
+                  + "*",
+                ]
+              + type        = "*"
+            }
+        }
+      + statement {
+          + actions   = [
+              + "s3:DeleteObject",
+              + "s3:GetObject",
+              + "s3:ListBucket",
+              + "s3:PutObject",
+            ]
+          + effect    = "Deny"
+          + resources = [
+              + (known after apply),
+              + (known after apply),
+            ]
+          + sid       = "DenyUnauthorizedStateAccess"
+
+          + condition {
+              + test     = "ArnNotEquals"
+              + values   = [
+                  + "arn:aws:iam::657103446220:user/aws-devops-lab-5",
+                ]
+              + variable = "aws:PrincipalArn"
+            }
+
+          + principals {
+              + identifiers = [
+                  + "*",
+                ]
+              + type        = "*"
+            }
+        }
+    }
+
+  # module.state_bucket.data.aws_iam_policy_document.state_access will be read during apply
+  # (config refers to values not yet known)
+ <= data "aws_iam_policy_document" "state_access" {
+      + id            = (known after apply)
+      + json          = (known after apply)
+      + minified_json = (known after apply)
+
+      + statement {
+          + actions   = [
+              + "s3:ListBucket",
+            ]
+          + effect    = "Allow"
+          + resources = [
+              + (known after apply),
+            ]
+          + sid       = "ListStateBucket"
+        }
+      + statement {
+          + actions   = [
+              + "s3:DeleteObject",
+              + "s3:GetObject",
+              + "s3:PutObject",
+            ]
+          + effect    = "Allow"
+          + resources = [
+              + (known after apply),
+            ]
+          + sid       = "ReadWriteStateAndLockFiles"
+        }
+    }
+
+  # module.state_bucket.aws_iam_policy.state_access will be created
+  + resource "aws_iam_policy" "state_access" {
+      + arn              = (known after apply)
+      + attachment_count = (known after apply)
+      + description      = "Least-privilege access to the Terraform state bucket jayne-tf-backend-tfstate-657103446220"
+      + id               = (known after apply)
+      + name             = "jayne-tf-backend-tfstate-657103446220-state-access"
+      + name_prefix      = (known after apply)
+      + path             = "/"
+      + policy           = (known after apply)
+      + policy_id        = (known after apply)
+      + tags_all         = {
+          + "Environment" = "shared"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "jayne-tf-backend"
+        }
+    }
+
+  # module.state_bucket.aws_iam_user_policy_attachment.state_access["aws-devops-lab-5"] will be created
+  + resource "aws_iam_user_policy_attachment" "state_access" {
+      + id         = (known after apply)
+      + policy_arn = (known after apply)
+      + user       = "aws-devops-lab-5"
+    }
+
+  # module.state_bucket.aws_s3_bucket.this will be created
+  + resource "aws_s3_bucket" "this" {
+      + acceleration_status         = (known after apply)
+      + acl                         = (known after apply)
+      + arn                         = (known after apply)
+      + bucket                      = "jayne-tf-backend-tfstate-657103446220"
+      + bucket_domain_name          = (known after apply)
+      + bucket_namespace            = (known after apply)
+      + bucket_prefix               = (known after apply)
+      + bucket_region               = (known after apply)
+      + bucket_regional_domain_name = (known after apply)
+      + force_destroy               = false
+      + hosted_zone_id              = (known after apply)
+      + id                          = (known after apply)
+      + object_lock_enabled         = (known after apply)
+      + policy                      = (known after apply)
+      + region                      = "eu-north-1"
+      + request_payer               = (known after apply)
+      + tags                        = {
+          + "Name"    = "jayne-tf-backend-tfstate-657103446220"
+          + "Purpose" = "terraform-remote-state"
+        }
+      + tags_all                    = {
+          + "Environment" = "shared"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "jayne-tf-backend-tfstate-657103446220"
+          + "Project"     = "jayne-tf-backend"
+          + "Purpose"     = "terraform-remote-state"
+        }
+      + website_domain              = (known after apply)
+      + website_endpoint            = (known after apply)
+
+      + cors_rule (known after apply)
+
+      + grant (known after apply)
+
+      + lifecycle_rule (known after apply)
+
+      + logging (known after apply)
+
+      + object_lock_configuration (known after apply)
+
+      + replication_configuration (known after apply)
+
+      + server_side_encryption_configuration (known after apply)
+
+      + versioning (known after apply)
+
+      + website (known after apply)
+    }
+
+  # module.state_bucket.aws_s3_bucket_ownership_controls.this will be created
+  + resource "aws_s3_bucket_ownership_controls" "this" {
+      + bucket = (known after apply)
+      + id     = (known after apply)
+      + region = "eu-north-1"
+
+      + rule {
+          + object_ownership = "BucketOwnerEnforced"
+        }
+    }
+
+  # module.state_bucket.aws_s3_bucket_policy.this will be created
+  + resource "aws_s3_bucket_policy" "this" {
+      + bucket = (known after apply)
+      + id     = (known after apply)
+      + policy = (known after apply)
+      + region = "eu-north-1"
+    }
+
+  # module.state_bucket.aws_s3_bucket_public_access_block.this will be created
+  + resource "aws_s3_bucket_public_access_block" "this" {
+      + block_public_acls       = true
+      + block_public_policy     = true
+      + bucket                  = (known after apply)
+      + id                      = (known after apply)
+      + ignore_public_acls      = true
+      + region                  = "eu-north-1"
+      + restrict_public_buckets = true
+    }
+
+  # module.state_bucket.aws_s3_bucket_server_side_encryption_configuration.this will be created
+  + resource "aws_s3_bucket_server_side_encryption_configuration" "this" {
+      + bucket = (known after apply)
+      + id     = (known after apply)
+      + region = "eu-north-1"
+
+      + rule {
+          + blocked_encryption_types = (known after apply)
+          + bucket_key_enabled       = (known after apply)
+
+          + apply_server_side_encryption_by_default {
+              + kms_master_key_id = (known after apply)
+              + sse_algorithm     = "AES256"
+            }
+        }
+    }
+
+  # module.state_bucket.aws_s3_bucket_versioning.this will be created
+  + resource "aws_s3_bucket_versioning" "this" {
+      + bucket = (known after apply)
+      + id     = (known after apply)
+      + region = "eu-north-1"
+
+      + versioning_configuration {
+          + mfa_delete = (known after apply)
+          + status     = "Enabled"
+        }
+    }
+
+Plan: 8 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + state_access_policy_arn = (known after apply)
+  + state_bucket_arn        = (known after apply)
+  + state_bucket_name       = (known after apply)
+  + state_bucket_region     = "eu-north-1"
+
+─────────────────────────────────────────────────────────────────────────────
+
+Saved the plan to: tfplan
+
+To perform exactly these actions, run the following command to apply:
+    terraform apply "tfplan"
