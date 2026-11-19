@@ -16,3 +16,4 @@ override.tf.json
 
 # Local credentials
 .env
+tfplan
