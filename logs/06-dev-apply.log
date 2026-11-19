@@ -1,0 +1,47 @@
+Acquiring state lock. This may take a few moments...
+module.vpc.aws_vpc.this: Creating...
+module.vpc.aws_vpc.this: Creation complete after 8s [id=vpc-001957937072c784b]
+module.vpc.aws_internet_gateway.this: Creating...
+module.vpc.aws_subnet.private[1]: Creating...
+module.vpc.aws_subnet.public[0]: Creating...
+module.vpc.aws_route_table.private: Creating...
+module.vpc.aws_subnet.private[0]: Creating...
+module.vpc.aws_subnet.public[1]: Creating...
+module.vpc.aws_internet_gateway.this: Creation complete after 1s [id=igw-0cbf1358c5aa34520]
+module.vpc.aws_route_table.public: Creating...
+module.vpc.aws_subnet.private[0]: Creation complete after 1s [id=subnet-024b86784cf29773b]
+module.vpc.aws_route_table.private: Creation complete after 1s [id=rtb-0a60cb2ccaec2c2bd]
+module.vpc.aws_route_table.public: Creation complete after 2s [id=rtb-07613b560a514aac6]
+module.vpc.aws_subnet.private[1]: Creation complete after 4s [id=subnet-086f2cdcc060ddc51]
+module.vpc.aws_route_table_association.private[0]: Creating...
+module.vpc.aws_route_table_association.private[1]: Creating...
+module.vpc.aws_route_table_association.private[1]: Creation complete after 1s [id=rtbassoc-0eb030a0b0e4af910]
+module.vpc.aws_route_table_association.private[0]: Creation complete after 1s [id=rtbassoc-0c1c19510f7329a94]
+module.vpc.aws_subnet.public[1]: Still creating... [00m10s elapsed]
+module.vpc.aws_subnet.public[0]: Still creating... [00m10s elapsed]
+module.vpc.aws_subnet.public[0]: Creation complete after 12s [id=subnet-0caed3c75cdb8016e]
+module.vpc.aws_subnet.public[1]: Creation complete after 12s [id=subnet-02be11a17f1d44a64]
+module.vpc.aws_route_table_association.public[1]: Creating...
+module.vpc.aws_route_table_association.public[0]: Creating...
+module.vpc.aws_route_table_association.public[1]: Creation complete after 1s [id=rtbassoc-02bb41d49b822eb09]
+module.vpc.aws_route_table_association.public[0]: Creation complete after 1s [id=rtbassoc-051378d9bb6d6b154]
+
+Apply complete! Resources: 12 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+availability_zones = tolist([
+  "eu-north-1a",
+  "eu-north-1b",
+])
+internet_gateway_id = "igw-0cbf1358c5aa34520"
+private_subnet_ids = [
+  "subnet-024b86784cf29773b",
+  "subnet-086f2cdcc060ddc51",
+]
+public_subnet_ids = [
+  "subnet-0caed3c75cdb8016e",
+  "subnet-02be11a17f1d44a64",
+]
+vpc_cidr_block = "10.0.0.0/16"
+vpc_id = "vpc-001957937072c784b"
