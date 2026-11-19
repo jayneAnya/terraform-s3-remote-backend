@@ -1,0 +1,58 @@
+module.vpc.aws_vpc.this: Creating...
+module.vpc.aws_vpc.this: Creation complete after 4s [id=vpc-01d5d8df8f86500f1]
+module.vpc.aws_internet_gateway.this: Creating...
+module.vpc.aws_subnet.private[2]: Creating...
+module.vpc.aws_subnet.public[0]: Creating...
+module.vpc.aws_subnet.public[1]: Creating...
+module.vpc.aws_subnet.private[1]: Creating...
+module.vpc.aws_route_table.private: Creating...
+module.vpc.aws_subnet.public[2]: Creating...
+module.vpc.aws_subnet.private[0]: Creating...
+module.vpc.aws_internet_gateway.this: Creation complete after 2s [id=igw-07a4878bf8dadae4b]
+module.vpc.aws_route_table.public: Creating...
+module.vpc.aws_subnet.private[1]: Creation complete after 2s [id=subnet-0c60aab8d269b73c5]
+module.vpc.aws_route_table.private: Creation complete after 2s [id=rtb-01b3124cc0047b3c3]
+module.vpc.aws_route_table.public: Creation complete after 2s [id=rtb-0eeb1f54aeba4003c]
+module.vpc.aws_subnet.private[0]: Creation complete after 5s [id=subnet-03b4911f55c762c46]
+module.vpc.aws_subnet.private[2]: Creation complete after 6s [id=subnet-01108baec9d332c4f]
+module.vpc.aws_route_table_association.private[0]: Creating...
+module.vpc.aws_route_table_association.private[1]: Creating...
+module.vpc.aws_route_table_association.private[2]: Creating...
+module.vpc.aws_route_table_association.private[1]: Creation complete after 0s [id=rtbassoc-072e0774ece80e5f5]
+module.vpc.aws_route_table_association.private[2]: Creation complete after 0s [id=rtbassoc-00d3eea5dcb6c3d37]
+module.vpc.aws_route_table_association.private[0]: Creation complete after 0s [id=rtbassoc-0c3486643cda5f52b]
+module.vpc.aws_subnet.public[2]: Still creating... [00m10s elapsed]
+module.vpc.aws_subnet.public[0]: Still creating... [00m10s elapsed]
+module.vpc.aws_subnet.public[1]: Still creating... [00m10s elapsed]
+module.vpc.aws_subnet.public[1]: Creation complete after 13s [id=subnet-0e658e2cf1ca14bd5]
+module.vpc.aws_subnet.public[0]: Creation complete after 13s [id=subnet-0cb5b9a5009fd4e24]
+module.vpc.aws_subnet.public[2]: Creation complete after 15s [id=subnet-01353d563b139bec4]
+module.vpc.aws_route_table_association.public[1]: Creating...
+module.vpc.aws_route_table_association.public[2]: Creating...
+module.vpc.aws_route_table_association.public[0]: Creating...
+module.vpc.aws_route_table_association.public[2]: Creation complete after 1s [id=rtbassoc-0514f9a1cd008d6cd]
+module.vpc.aws_route_table_association.public[1]: Creation complete after 1s [id=rtbassoc-0feca95c94c2e0b3b]
+module.vpc.aws_route_table_association.public[0]: Creation complete after 1s [id=rtbassoc-0dcc2341deecae60e]
+
+Apply complete! Resources: 16 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+availability_zones = tolist([
+  "eu-north-1a",
+  "eu-north-1b",
+  "eu-north-1c",
+])
+internet_gateway_id = "igw-07a4878bf8dadae4b"
+private_subnet_ids = [
+  "subnet-03b4911f55c762c46",
+  "subnet-0c60aab8d269b73c5",
+  "subnet-01108baec9d332c4f",
+]
+public_subnet_ids = [
+  "subnet-0cb5b9a5009fd4e24",
+  "subnet-0e658e2cf1ca14bd5",
+  "subnet-01353d563b139bec4",
+]
+vpc_cidr_block = "10.1.0.0/16"
+vpc_id = "vpc-01d5d8df8f86500f1"
